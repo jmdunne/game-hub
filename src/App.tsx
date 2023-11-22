@@ -19,15 +19,11 @@ function App() {
 
       {/* Conditionally rendered GridItem for the aside area on large screens */}
       <Show above="lg">
-        <GridItem area="aside" bg="gold">
-          Aside
-        </GridItem>
+        <GridItem area="aside">Aside</GridItem>
       </Show>
 
       {/* GridItem for the main content area with a dodgerblue background */}
-      <GridItem area="main" bg="dodgerblue">
-        Main
-      </GridItem>
+      <GridItem area="main">Main</GridItem>
     </Grid>
   );
 }
