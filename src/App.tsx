@@ -1,6 +1,7 @@
 // Importing the necessary components from Chakra UI and the NavBar component.
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar"; // Import NavBar from the components folder.
+import GameGrid from "./components/GameGrid";
 
 function App() {
   return (
@@ -23,7 +24,9 @@ function App() {
       </Show>
 
       {/* GridItem for the main content area with a dodgerblue background */}
-      <GridItem area="main">Main</GridItem>
+      <GridItem area="main">
+        <GameGrid />
+      </GridItem>
     </Grid>
   );
 }

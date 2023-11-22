@@ -1,18 +1,21 @@
-// Importing Chakra UI components for building the NavBar.
+// Importing necessary components from Chakra UI, a library that helps style our application.
 import { HStack, Image } from "@chakra-ui/react";
-import logo from "../assets/logo.webp"; // Importing the logo image.
-import ColorModeSwitch from "./ColorModeSwitch";
+import logo from "../assets/logo.webp"; // This line brings in the logo image for our NavBar.
+import ColorModeSwitch from "./ColorModeSwitch"; // Importing the ColorModeSwitch component, which we'll use to switch between light and dark modes.
 
+// Defining the NavBar component.
 const NavBar = () => {
   return (
-    // HStack (Horizontal Stack) component to align items horizontally.
+    // HStack is a horizontal stack that lines up items side by side.
     <HStack justifyContent="space-between" padding="10px">
-      {/* Image component displaying the logo, with a specified box size */}
+      {/* Here, we're displaying our logo using the Image component from Chakra UI. */}
       <Image src={logo} boxSize="60px" />
 
+      {/* Including the ColorModeSwitch component which lets users switch between light and dark mode. */}
       <ColorModeSwitch />
     </HStack>
   );
 };
 
-export default NavBar; // Exporting the NavBar as a default export for use in other files.
+// Making the NavBar component available for use in other parts of our application.
+export default NavBar;
