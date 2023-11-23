@@ -1,25 +1,34 @@
-import { Text } from "@chakra-ui/react";
+// Importing necessary UI components and React.
+import { Text, SimpleGrid } from "@chakra-ui/react";
 import React from "react";
-import useGames from "../hooks/useGames";
+import useGames from "../hooks/useGames"; // Importing our custom hook, useGames.
+import GameCard from "./GameCard";
 
+// GameGrid component that will display a grid of games.
 const GameGrid = () => {
+  // Using the useGames hook to get games data and any error messages.
   const { games, error } = useGames();
 
-  // Rendering the component.
+  // Rendering the GameGrid component.
   return (
     <>
-      {/* Displaying an error message if there is one. */}
+      {/* Conditionally displaying an error message if there's an error */}
       {error && <Text>{error}</Text>}
 
-      {/* Rendering a list of games. */}
-      <ul>
+      {/* Creating a list to display the games */}
+      <SimpleGrid
+        columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
+        spacing={10}
+        padding={10}
+      >
         {games.map((game) => (
-          <li key={game.id}>{game.name}</li> // Each game is displayed as an item in the list.
+          // Rendering each game as an item in the list.
+          <GameCard key={game.id} game={game} />
         ))}
-      </ul>
+      </SimpleGrid>
     </>
   );
 };
 
-// Exporting GameGrid for use in other parts of the application.
+// Exporting GameGrid so it can be used in other parts of the application.
 export default GameGrid;
