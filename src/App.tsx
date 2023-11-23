@@ -23,7 +23,7 @@ function App() {
         <GridItem area="aside">Aside</GridItem>
       </Show>
 
-      {/* GridItem for the main content area with a dodgerblue background */}
+      {/* GridItem for the main content area with a dodgerblue background. Gamegrid component is placed in this section */}
       <GridItem area="main">
         <GameGrid />
       </GridItem>
