@@ -3,10 +3,17 @@ import { useState, useEffect } from "react";
 import apiClient from "../services/api-client"; // Importing our API client for making HTTP requests.
 import { CanceledError } from "axios"; // Importing CanceledError to handle canceled API requests.
 
+export interface Platform {
+  id: number;
+  name: string;
+  slug: string;
+}
+
 export interface Game {
   id: number;
   name: string;
   background_image: string;
+  parent_platforms: { platform: Platform} []
 }
 
 // Defining the expected structure of the response from the API.
