@@ -14,6 +14,7 @@ export interface Game {
   name: string;
   background_image: string;
   parent_platforms: { platform: Platform} []
+  metacritic: number;
 }
 
 // Defining the expected structure of the response from the API.
