@@ -1,6 +1,5 @@
 // Importing necessary UI components and React.
 import { Text, SimpleGrid } from "@chakra-ui/react";
-import React from "react";
 import useGames from "../hooks/useGames"; // Importing our custom hook, useGames.
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
@@ -9,7 +8,7 @@ import GameCardContainer from "./GameCardContainer";
 // GameGrid component that will display a grid of games.
 const GameGrid = () => {
   // Using the useGames hook to get games data and any error messages.
-  const { games, error, isLoading } = useGames();
+  const { data, error, isLoading } = useGames();
   const skeletons = [1, 2, 3, 4, 5, 6];
 
   // Rendering the GameGrid component.
@@ -25,7 +24,7 @@ const GameGrid = () => {
         padding={10}
       >
         {isLoading && skeletons.map(skeleton => <GameCardContainer> <GameCardSkeleton key={skeleton} /> </GameCardContainer> )}
-        {games.map((game) => (
+        {data && data.map((game) => (
           // Rendering each game as an item in the list.
           <GameCardContainer>
             <GameCard key={game.id} game={game} />
