@@ -2,6 +2,7 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar"; // Import NavBar from the components folder.
 import GameGrid from "./components/GameGrid";
+import GenreList from "./components/GenreList";
 
 function App() {
   return (
@@ -20,7 +21,9 @@ function App() {
 
       {/* Conditionally rendered GridItem for the aside area on large screens */}
       <Show above="lg">
-        <GridItem area="aside">Aside</GridItem>
+        <GridItem area="aside">
+          <GenreList />
+        </GridItem>
       </Show>
 
       {/* GridItem for the main content area with a dodgerblue background. Gamegrid component is placed in this section */}
