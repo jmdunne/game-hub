@@ -4,6 +4,7 @@ import React from "react";
 import useGames from "../hooks/useGames"; // Importing our custom hook, useGames.
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
+import GameCardContainer from "./GameCardContainer";
 
 // GameGrid component that will display a grid of games.
 const GameGrid = () => {
@@ -23,10 +24,12 @@ const GameGrid = () => {
         spacing={10}
         padding={10}
       >
-        {isLoading && skeletons.map(skeleton => <GameCardSkeleton key={skeleton} /> )}
+        {isLoading && skeletons.map(skeleton => <GameCardContainer> <GameCardSkeleton key={skeleton} /> </GameCardContainer> )}
         {games.map((game) => (
           // Rendering each game as an item in the list.
-          <GameCard key={game.id} game={game} />
+          <GameCardContainer>
+            <GameCard key={game.id} game={game} />
+          </GameCardContainer>
         ))}
       </SimpleGrid>
     </>
