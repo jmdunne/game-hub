@@ -12,6 +12,10 @@ function App() {
         base: '"nav" "main"', // Single column layout for small screens.
         lg: '"nav nav" "aside main"', // Two-row layout for large screens.
       }}
+      templateColumns={{
+        base: "1fr",
+        lg: '200px 1fr' 
+      }}
     >
       {/* GridItem for the navigation area */}
       <GridItem area="nav">
@@ -21,7 +25,7 @@ function App() {
 
       {/* Conditionally rendered GridItem for the aside area on large screens */}
       <Show above="lg">
-        <GridItem area="aside">
+        <GridItem area="aside" paddingX={5}>
           <GenreList />
         </GridItem>
       </Show>

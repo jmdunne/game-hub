@@ -20,8 +20,8 @@ const GameGrid = () => {
       {/* Creating a list to display the games */}
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
-        spacing={10}
-        padding={10}
+        spacing={3}
+        padding="10px"
       >
         {isLoading && skeletons.map(skeleton => <GameCardContainer> <GameCardSkeleton key={skeleton} /> </GameCardContainer> )}
         {data && data.map((game) => (
