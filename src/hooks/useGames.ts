@@ -1,5 +1,6 @@
 // Importing React hooks for state and effect management.
 import useData from "./useData";
+import { Genre } from "./useGenres";
 
 export interface Platform {
   id: number;
@@ -16,7 +17,7 @@ export interface Game {
 }
 
 // Custom hook useGames for fetching games data.
-const useGames = () => useData<Game>('/games');
+const useGames = (selectedGenre: Genre | null) => useData<Game>('/games', { params: { genres: selectedGenre?.id}}, [selectedGenre?.id]);
 
 // Exporting the custom hook for use in other components.
 export default useGames;

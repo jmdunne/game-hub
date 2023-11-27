@@ -3,10 +3,13 @@ import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar"; // Import NavBar from the components folder.
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
+import { useState } from "react";
+import { Genre } from "./hooks/useGenres";
 
 function App() {
+const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+
   return (
-    // Grid component to create a flexible layout with named areas.
     <Grid
       templateAreas={{
         base: '"nav" "main"', // Single column layout for small screens.
@@ -26,13 +29,13 @@ function App() {
       {/* Conditionally rendered GridItem for the aside area on large screens */}
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
-          <GenreList />
+          <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)}/>
         </GridItem>
       </Show>
 
       {/* GridItem for the main content area with a dodgerblue background. Gamegrid component is placed in this section */}
       <GridItem area="main">
-        <GameGrid />
+        <GameGrid selectedGenre={selectedGenre} />
       </GridItem>
     </Grid>
   );

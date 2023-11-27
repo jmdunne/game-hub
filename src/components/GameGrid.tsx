@@ -4,11 +4,16 @@ import useGames from "../hooks/useGames"; // Importing our custom hook, useGames
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
+import { Genre } from "../hooks/useGenres";
+
+interface Props {
+  selectedGenre: Genre | null
+}
 
 // GameGrid component that will display a grid of games.
-const GameGrid = () => {
+const GameGrid = ({ selectedGenre }: Props) => {
   // Using the useGames hook to get games data and any error messages.
-  const { data, error, isLoading } = useGames();
+  const { data, error, isLoading } = useGames(selectedGenre);
   const skeletons = [1, 2, 3, 4, 5, 6];
 
   // Rendering the GameGrid component.
@@ -23,11 +28,11 @@ const GameGrid = () => {
         spacing={3}
         padding="10px"
       >
-        {isLoading && skeletons.map(skeleton => <GameCardContainer> <GameCardSkeleton key={skeleton} /> </GameCardContainer> )}
+        {isLoading && skeletons.map(skeleton => <GameCardContainer key={skeleton}> <GameCardSkeleton /> </GameCardContainer> )}
         {data && data.map((game) => (
           // Rendering each game as an item in the list.
-          <GameCardContainer>
-            <GameCard key={game.id} game={game} />
+          <GameCardContainer key={game.id}>
+            <GameCard game={game} />
           </GameCardContainer>
         ))}
       </SimpleGrid>
