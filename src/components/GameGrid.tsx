@@ -1,6 +1,6 @@
 // Importing necessary UI components and React.
 import { Text, SimpleGrid } from "@chakra-ui/react";
-import useGames from "../hooks/useGames"; // Importing our custom hook, useGames.
+import useGames, { Platform } from "../hooks/useGames"; // Importing our custom hook, useGames.
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
@@ -8,12 +8,13 @@ import { Genre } from "../hooks/useGenres";
 
 interface Props {
   selectedGenre: Genre | null
+  selectedPlatform: Platform | null
 }
 
 // GameGrid component that will display a grid of games.
-const GameGrid = ({ selectedGenre }: Props) => {
+const GameGrid = ({ selectedGenre, selectedPlatform }: Props) => {
   // Using the useGames hook to get games data and any error messages.
-  const { data, error, isLoading } = useGames(selectedGenre);
+  const { data, error, isLoading } = useGames(selectedGenre, selectedPlatform);
   const skeletons = [1, 2, 3, 4, 5, 6];
 
   // Rendering the GameGrid component.
