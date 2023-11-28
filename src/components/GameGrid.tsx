@@ -4,26 +4,18 @@ import useGames, { Platform } from "../hooks/useGames"; // Importing our custom 
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
-import { Genre } from "../hooks/useGenres";
 import { GameQuery } from "../App";
 
 interface Props {
   gameQuery: GameQuery
 }
-
-// GameGrid component that will display a grid of games.
 const GameGrid = ({ gameQuery }: Props) => {
-  // Using the useGames hook to get games data and any error messages.
   const { data, error, isLoading } = useGames(gameQuery);
   const skeletons = [1, 2, 3, 4, 5, 6];
 
-  // Rendering the GameGrid component.
-  return (
-    <>
-      {/* Conditionally displaying an error message if there's an error */}
-      {error && <Text>{error}</Text>}
+  if (error) return <Text>{error}</Text>;
 
-      {/* Creating a list to display the games */}
+  return (
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
         spacing={6}
@@ -31,15 +23,12 @@ const GameGrid = ({ gameQuery }: Props) => {
       >
         {isLoading && skeletons.map(skeleton => <GameCardContainer key={skeleton}> <GameCardSkeleton /> </GameCardContainer> )}
         {data && data.map((game) => (
-          // Rendering each game as an item in the list.
           <GameCardContainer key={game.id}>
             <GameCard game={game} />
           </GameCardContainer>
         ))}
       </SimpleGrid>
-    </>
   );
 };
 
-// Exporting GameGrid so it can be used in other parts of the application.
 export default GameGrid;
