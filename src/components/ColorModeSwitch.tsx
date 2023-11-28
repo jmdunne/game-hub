@@ -16,7 +16,7 @@ const ColorModeSwitch = () => {
         onChange={toggleColorMode} // Changes the color mode when toggled.
       />
       {/* Text component displaying a label for the switch. */}
-      <Text>Dark Mode</Text>
+      <Text whiteSpace='nowrap'>Dark Mode</Text>
     </HStack>
   );
 };
