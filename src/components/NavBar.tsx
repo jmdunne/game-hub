@@ -4,11 +4,15 @@ import logo from "../assets/logo.webp"; // This line brings in the logo image fo
 import ColorModeSwitch from "./ColorModeSwitch"; // Importing the ColorModeSwitch component, which we'll use to switch between light and dark modes.
 import SearchInput from "./SearchInput";
 
-const NavBar = () => {
+interface Props {
+  onSearch: (searchText: string) => void;
+}
+
+const NavBar = ({ onSearch }: Props) => {
   return (
     <HStack padding="10px">
       <Image src={logo} boxSize="60px" />
-      <SearchInput />
+      <SearchInput onSearch={onSearch} />
       <ColorModeSwitch />
     </HStack>
   );
