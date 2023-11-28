@@ -10,7 +10,23 @@ const config: ThemeConfig = {
 
 // The 'extendTheme' function takes our settings (like the dark mode setting) and applies them to the default theme provided by Chakra UI.
 // Think of it as customizing the default design.
-const theme = extendTheme({ config });
+const theme = extendTheme({ 
+  config,
+  colors: {
+    gray: {
+      50: '#f9f9f9',
+      100: '#ededed',
+      200: '#d3d3d3',
+      300: '#b3b3b3',
+      400: '#a0a0a0',
+      500: '#898989',
+      600: '#636363',
+      700: '#202020',
+      800: '#121212',
+      900: '#111'
+    }
+  }
+});
 
 // Finally, we make our customized theme available to be used in other parts of our app.
 export default theme;
